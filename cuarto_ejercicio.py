@@ -31,8 +31,12 @@ def calcular_tiempo(base, exponente, modulo):
 def menu ():
     base = int(input("Ingrese la base: "))
     exponente = int(input("Ingrese el exponente: "))
-    tiempo = calcular_tiempo(base, exponente, 27)
+    modulo = int(input("Ingrese el módulo: "))
+    exponente_en_binario = exponente_a_binario(base, exponente)
+    tiempo = calcular_tiempo(base, exponente, modulo)   
+    print(f"El exponente en binario es: {exponente_en_binario}")
     print(f"\n¡Cálculo terminado! El tiempo de ejecución fue: {tiempo:.6f} segundos")
+    
 
 if __name__ == "__main__":
     menu()
