@@ -1,5 +1,4 @@
-# Asumo que en 'primer_ejercicio.py' la función devuelve una lista o string de bits
-from primer_ejercicio import exponente_a_binario
+from ejercicio_1 import exponente_a_binario
 
 def cuadrado_y_multiplicacion(base, exponente):
     lista_de_bits = list(exponente_a_binario(base,exponente)) 
