@@ -1,39 +1,210 @@
-# Criptografía - Proyecto 1
+# 📘 README - Algoritmos de Exponenciación y Criptografía Clásica
 
-Este repositorio contiene la implementación de varios algoritmos fundamentales de criptografía y matemáticas discretas, desarrollados en Python. El proyecto está dividido en seis ejercicios principales que abordan desde la exponenciación rápida y modular hasta cifrados clásicos como César y Afín.
+## 📌 Descripción general
 
-## Ejercicios
+Este proyecto contiene una colección de ejercicios en Python enfocados en:
 
-### 1. Conversión a Binario (`primer_ejercicio.py`)
-Convierte un exponente a su representación binaria de forma recursiva y calcula los pesos correspondientes para cada bit. Es la base para los algoritmos de exponenciación rápida.
+- Representación binaria de exponentes
+- Exponenciación eficiente (Cuadrado y Multiplicación)
+- Análisis de complejidad computacional
+- Exponenciación modular
+- Cifrados clásicos: César y Afín
 
-### 2. Algoritmo de Cuadrado y Multiplicación (`segundo_ejercicio.py`)
-Implementa el algoritmo de **Cuadrado y Multiplicación** (Square and Multiply) para calcular potencias de forma eficiente, detallando el proceso paso a paso (qué ocurre con cada bit).
+Cada ejercicio aborda un concepto específico y construye sobre el anterior.
 
-### 3. Análisis de Eficiencia (`tercer_ejercicio.py`)
-Compara la cantidad de operaciones requeridas por el método ingenuo de exponenciación frente al método de Cuadrado y Multiplicación (AER). Incluye una visualización gráfica en terminal que muestra el porcentaje de ahorro computacional para distintos exponentes.
+---
 
-### 4. Exponenciación Modular (`cuarto_ejercicio.py`)
-Aplica el algoritmo de Cuadrado y Multiplicación para realizar **exponenciación modular** (`(base^exponente) % modulo`). Además, calcula y muestra el tiempo de ejecución exacto de la operación.
+## 🧩 Ejercicio 1: Exponente a Binario
 
-### 5. Cifrado César y Fuerza Bruta (`quinto_ejercicio.py`)
-Implementa el **Cifrado César** utilizando un alfabeto de 27 caracteres (incluyendo la 'Ñ'). Incluye una herramienta de **criptoanálisis por Fuerza Bruta** que evalúa todas las combinaciones posibles y selecciona automáticamente la correcta usando un diccionario de palabras en español (con temática de Don Quijote).
+### 🔹 Objetivo
+Convertir un exponente decimal a su representación binaria.
 
-### 6. Cifrado Afín (`sexto_ejercicio.py`)
-Implementa el **Cifrado Afín**. Para garantizar su funcionamiento, incluye un algoritmo recursivo que verifica si el multiplicador y el tamaño del alfabeto (27) son números **primos relativos** (coprimos), condición indispensable para el descifrado.
+### 🔹 Funcionamiento
 
-## Requisitos
+- Se usa recursividad para dividir el exponente entre 2.
+- Se almacenan los residuos (bits).
+- El resultado es una lista de bits.
 
-- Python 3.x
-- No requiere dependencias o librerías externas (solo módulos estándar de Python como `time` y `sys`).
+```python
+exponente_a_binario(base, exponente)
+```
 
-## Uso
+### 🔹 Concepto clave
 
-Cada script está diseñado para ejecutarse de forma independiente y cuenta con un menú interactivo por consola. 
+$$
+n = \sum b_i \cdot 2^i
+$$
 
-Para ejecutar un ejercicio, utiliza la terminal:
+---
+
+## 🧩 Ejercicio 2: Cuadrado y Multiplicación
+
+### 🔹 Objetivo
+Calcular $base^{exponente}$ de forma eficiente usando la representación binaria.
+
+### 🔹 Funcionamiento
+
+- Se recorre el exponente en binario.
+- Por cada bit:
+  - Se eleva al cuadrado el acumulador.
+  - Si el bit es 1, se multiplica por la base.
+
+### 🔹 Algoritmo
+
+1. Inicializar acumulador en 1
+2. Para cada bit:
+   - Cuadrar acumulador
+   - Si bit = 1 → multiplicar por base
+
+### 🔹 Ventaja
+
+Reduce complejidad de:
+
+- Ingenuo: $O(n)$
+- Eficiente: $O(\log n)$
+
+---
+
+## 🧩 Ejercicio 3: Conteo de Operaciones
+
+### 🔹 Objetivo
+Comparar el número de operaciones entre:
+
+- Método ingenuo
+- Algoritmo AER (Cuadrado y Multiplicación)
+
+### 🔹 Métodos
+
+#### Ingenuo
+
+$$
+base^n = base \cdot base \cdot ... \cdot base
+$$
+
+→ n multiplicaciones
+
+#### AER
+
+- 1 operación por bit (cuadrado)
+- +1 si el bit es 1
+
+### 🔹 Resultado
+
+Se imprime un gráfico en texto mostrando el ahorro:
+
+```
+Ingenuo: 0000000000
+AER:     0000
+```
+
+---
+
+## 🧩 Ejercicio 4: Exponenciación Modular
+
+### 🔹 Objetivo
+Calcular:
+
+$$
+base^{exponente} \mod m
+$$
+
+### 🔹 Funcionamiento
+
+- Aplica Cuadrado y Multiplicación
+- Reduce módulo en cada paso
+
+```python
+(acumulador ** 2) % modulo
+```
+
+### 🔹 Ventaja
+
+- Evita overflow
+- Fundamental en criptografía (ej: RSA)
+
+---
+
+## 🧩 Ejercicio 5: Cifrado César
+
+### 🔹 Objetivo
+Implementar cifrado por desplazamiento en alfabeto español.
+
+### 🔹 Fórmula
+
+$$
+C_i = (M_i + k) \mod 27
+$$
+
+- $M_i$: posición de la letra
+- $k$: desplazamiento
+
+### 🔹 Funcionalidades
+
+- Cifrado de texto
+- Ataque por fuerza bruta
+- Evaluación con diccionario
+
+### 🔹 Flujo
+
+1. Cifrar texto
+2. Probar todos los desplazamientos
+3. Elegir el mejor resultado según coincidencias
+
+---
+
+## 🧩 Ejercicio 6: Cifrado Afín
+
+### 🔹 Objetivo
+Generalizar el cifrado César usando una función lineal.
+
+### 🔹 Fórmula
+
+$$
+C_i = (a \cdot M_i + b) \mod 27
+$$
+
+### 🔹 Restricción
+
+$$
+\gcd(a, 27) = 1
+$$
+
+→ garantiza inversa modular
+
+### 🔹 Funcionamiento
+
+- Verifica si $a$ es primo relativo con 27
+- Aplica transformación letra por letra
+
+---
+
+## 🔗 Relación entre ejercicios
+
+```
+Binario → Exponenciación eficiente → Optimización → Modular → Criptografía
+```
+
+---
+
+## ⚙️ Ejecución
+
+Cada ejercicio tiene su propio `menu()`:
 
 ```bash
-python primer_ejercicio.py
+python ejercicio_X.py
 ```
-*(Sigue las instrucciones en pantalla para ingresar bases, exponentes, módulos o textos según corresponda).*
+
+---
+
+## 📚 Conceptos clave
+
+- Recursividad
+- Representación binaria
+- Complejidad algorítmica
+- Aritmética modular
+- Criptografía clásica
+
+---
+
+
+---
