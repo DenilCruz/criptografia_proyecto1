@@ -10,7 +10,7 @@ def contar_operaciones_ingenuo(base, exponente):
 def contar_aer(base, exponente):
     lista_de_bits = list(exponente_a_binario(base,exponente)) 
     operaciones_totales = resultado_final(base, lista_de_bits, contador=0)
-    return operaciones_totales
+    return operaciones_totales - 1
 
     
 def resultado_final(base, lista_de_bits_del_exponente, contador):
@@ -33,7 +33,7 @@ def menu():
 
 def grafico_terminal_comparacion():
     base = 2
-    exponentes = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50] 
+    exponentes = [5, 10, 13, 20, 25, 30, 35, 40, 45, 50] 
     
     print("\n" + "="*70)
     print(" ANÁLISIS DE AHORRO DE CÓMPUTO: INGENUO VS AER")
@@ -59,8 +59,8 @@ def grafico_terminal_comparacion():
             
         # Imprimir el bloque para este exponente
         print(f"Exponente: {e} | Ahorro: {ahorro:.1f}% {alerta}")
-        print(f"Ingenuo ({ops_i}): {barra_ingenuo}")
-        print(f"AER     ({ops_a}): {barra_aer}")
+        print(f"Ingenuo ({ops_i:2d}): {barra_ingenuo}")
+        print(f"AER     ({ops_a:2d}): {barra_aer}")
         print("-" * 70)
 
 

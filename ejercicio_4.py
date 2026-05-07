@@ -1,5 +1,5 @@
 import time
-from primer_ejercicio import exponente_a_binario
+from ejercicio_1 import exponente_a_binario
 import sys
 
 sys.setrecursionlimit(5000)
