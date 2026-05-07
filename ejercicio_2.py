@@ -1,7 +1,7 @@
 from ejercicio_1 import exponente_a_binario
 
 def cuadrado_y_multiplicacion(base, exponente):
-    lista_de_bits = list(exponente_a_binario(base,exponente)) 
+    lista_de_bits = exponente_a_binario(base,exponente) 
     resultado = resultado_final(base, lista_de_bits, acumulador=1)
     return resultado
 
@@ -10,11 +10,11 @@ def resultado_final(base, lista_de_bits_del_exponente, acumulador):
     if not lista_de_bits_del_exponente:
         return acumulador
 
-    bit_actual = str(lista_de_bits_del_exponente.pop(0))
+    bit_actual = lista_de_bits_del_exponente.pop(0)
     acumulador = acumulador ** 2
     print(f"Bit {bit_actual} -> CUADRADO: El acumulado ahora es {acumulador}")
     
-    if bit_actual == '1':
+    if bit_actual == 1:
         acumulador = acumulador * base
         print(f"Bit {bit_actual} -> MULTIPLICACIÓN: El acumulado ahora es {acumulador}")
     else:

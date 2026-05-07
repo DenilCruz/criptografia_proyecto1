@@ -6,15 +6,14 @@ sys.setrecursionlimit(5000)
 
 
 def cuadrado_y_multiplicacion(base, exponente, modulo):
-    lista_de_bits = list(exponente_a_binario(base, exponente)) 
-    return resultado_final(base, lista_de_bits, 0, acumulador=1, modulo=modulo)
+    lista_de_bits = exponente_a_binario(base, exponente)
+    return resultado_final(base, lista_de_bits, 0, 1, modulo)
 
 def resultado_final(base, lista_de_bits, indice, acumulador, modulo):
     if indice == len(lista_de_bits):
         return acumulador
 
     bit_actual = lista_de_bits[indice]
-
     acumulador = (acumulador ** 2) % modulo
     
     if bit_actual == 1:
@@ -34,8 +33,9 @@ def menu ():
     modulo = int(input("Ingrese el módulo: "))
     exponente_en_binario = exponente_a_binario(base, exponente)
     tiempo = calcular_tiempo(base, exponente, modulo)   
-    print(f"El exponente en binario es: {exponente_en_binario}")
+    #print(f"El exponente en binario es: {exponente_en_binario}")
     print(f"\n¡Cálculo terminado! El tiempo de ejecución fue: {tiempo:.6f} segundos")
+    print(f"El resultado de {base} elevado a {exponente} es: {cuadrado_y_multiplicacion(base, exponente, modulo)}")
     
 
 if __name__ == "__main__":

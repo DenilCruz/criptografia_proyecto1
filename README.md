@@ -206,5 +206,142 @@ python ejercicio_X.py
 
 ---
 
+---
+
+# 🧪 Archivo de pruebas integradas: `prueba.py`
+
+## 📌 Propósito
+
+El archivo `prueba.py` permite ejecutar todos los ejercicios del proyecto desde un único menú interactivo.
+
+Sirve para:
+
+- Verificar el funcionamiento de cada módulo
+- Probar la integración entre ejercicios
+- Comparar algoritmos
+- Ejecutar demostraciones rápidas
+- Validar resultados sin abrir cada archivo individualmente
+
+---
+
+## 📂 Estructura esperada del proyecto
+
+```text
+proyecto/
+│
+├── ejercicio_1.py
+├── ejercicio_2.py
+├── ejercicio_3.py
+├── ejercicio_4.py
+├── ejercicio_5.py
+├── ejercicio_6.py
+│
+├── prueba.py
+└── README.md
+```
+
+---
+
+## ▶️ Cómo ejecutar
+
+Ubicarse en la carpeta del proyecto y ejecutar:
+
+```bash
+python prueba.py
+```
+
+o en algunos sistemas:
+
+```bash
+python3 prueba.py
+```
+
+---
+
+## 🖥️ Menú principal
+
+Al ejecutar el archivo aparecerá un menú similar a:
+
+```text
+PROYECTO DE EXPONENCIACIÓN Y CRIPTOGRAFÍA
+
+1. Probar Ejercicio 1
+2. Probar Ejercicio 2
+3. Probar Ejercicio 3
+4. Probar Ejercicio 4
+5. Probar Ejercicio 5
+6. Probar Ejercicio 6
+7. Ejecutar TODO
+0. Salir
+```
+
+---
+
+## 🔍 Qué realiza cada opción
+
+| Opción | Función |
+|---|---|
+| 1 | Conversión de exponentes a binario |
+| 2 | Exponenciación eficiente |
+| 3 | Comparación de operaciones |
+| 4 | Exponenciación modular |
+| 5 | Cifrado César y fuerza bruta |
+| 6 | Cifrado Afín |
+| 7 | Ejecuta todas las pruebas |
+| 0 | Finaliza el programa |
+
+---
+
+## 📌 Requisitos
+
+- Python 3.x
+- Archivos del proyecto en la misma carpeta
+- Consola o terminal
+
+Verificar versión:
+
+```bash
+python --version
+```
+
+---
+
+## ⚠️ Posibles errores comunes
+
+### Error: `ModuleNotFoundError`
+
+Ocurre cuando un archivo no se encuentra en la carpeta.
+
+Verificar:
+
+```text
+ejercicio_1.py
+ejercicio_2.py
+...
+```
+
+---
+
+### Error de recursividad
+
+El ejercicio 4 aumenta el límite con:
+
+```python
+sys.setrecursionlimit(5000)
+```
+
+Si se usan exponentes muy grandes puede ser necesario aumentar ese valor.
+
+---
+
+## 🧠 Objetivo académico del archivo de pruebas
+
+Este archivo permite estudiar:
+
+- Modularización
+- Reutilización de funciones
+- Importación entre archivos
+- Integración de algoritmos
+- Automatización de pruebas básicas
 
 ---
